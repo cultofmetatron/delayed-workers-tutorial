@@ -1,0 +1,29 @@
+{
+  "name": "delayed-workers-tutorial",
+  "version": "0.0.0",
+  "description": "a tutorial app for delayed workers with rabbitmiq and node",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cultofmetatron/delayed-workers-tutorial.git"
+  },
+  "keywords": [
+    "delayed",
+    "job",
+    "rabbitmq"
+  ],
+  "author": "Peter de Croos <cultofmetatron@aumlogic.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cultofmetatron/delayed-workers-tutorial/issues"
+  },
+  "homepage": "https://github.com/cultofmetatron/delayed-workers-tutorial",
+  "dependencies": {
+    "express": "^4.0.0",
+    "aws-sdk": "^2.0.0-rc13",
+    "amqp": "^0.2.0"
+  }
+}
