@@ -1,3 +1,4 @@
+var path = require('path');
 module.exports.database = {
   client: 'pg',
   connection: {
@@ -8,5 +9,6 @@ module.exports.database = {
   }
 };
 
+//used by knex migrations
 module.exports.directory = path.join(__dirname, 'migrations');
 module.exports.tableName = 'migrations';
