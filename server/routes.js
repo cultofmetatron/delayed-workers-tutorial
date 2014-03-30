@@ -5,7 +5,7 @@ var files = controllers.files;
 router.route('/files')
   .get(files.index)
   .post(files.create)
-
+  
 router.route('/files/:id')
   .get(files.read)
   .put(files.update)
