@@ -1,7 +1,5 @@
-delayed-workers-tutorial
+Background Workers
 ========================
-
-
 ###Using creating delayed jobs with node and heroku with RabbitMQ.
 
 
@@ -17,15 +15,19 @@ Scaling a node app properly means understanding its greatest limitation: blockin
 Node itself deals with blocking tasks by having asynchronous functions. 
 
 ```
+
 fs = require('fs');
-fs.readFile('', 'utf8, function(err, contents) {
+fs.readFile('./README.md', 'utf8, function(err, contents) {
 	console.log(contents);
 });
 
 ```
 
+Under the hood, Node stores an 'event' in a [priority queue](http://en.wikipedia.org/wiki/Priority_queue). 
 
-Under the hood, Node stores an 'event' in a [priority queue](http://en.wikipedia.org/wiki/Priority_queue). File i/o access is a potential blocking event so the Event is registered in a queue to be run later. when the current code path meets its end, the event queue goes on to the next task which is has a an associated callback. This approach works surprisingly well for io bound 
+File i/o access is a potential blocking event so the Event is registered in a queue to be run later. when the current code path meets its end, the event queue goes on to the next task which is has a an associated callback. We're basicly telling node, "After we are done with what we are currently doing, I want you to load the contents of README.md and run the callback function I just gave you with the contents passed into it."
 
+This approach works surprisingly well for IO bound 
 
-For tasks in which we don't need to include the result of the blocking computations in the response, We can take care of these tasks asynchronously using an event queue like RabbitMQ. 
+Outside of node itself, we can solve similar blocking issues using a 3rd party event queue like rabbitMQ. In a similar fashion, we register an 'event' in rabbit mq and we have a seperate process check if there are any jobs in the queue. it then handles it accoringly and updates the queue when the job is finished allowing the originator process to know that the job has been handled asynchronously.
+
