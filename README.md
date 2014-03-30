@@ -130,7 +130,7 @@ Run the migration to move the schema into the database.
 ```
 
 
-#### express 4.x routes
+#### setting up the routes
 
 Express 4.x comes with an amazing new Router object that lets us decouple routes from the app.
 In ./server, create a controllers folder with a files folder with an index.js. In this file, create the controller verbs.
@@ -179,6 +179,45 @@ router.route('/files/:id')
 module.exports = router;
 
 ```
+
+now we just need to set up the main app. the index.js in ./server will be the start point where
+the express app is initialized. I like to put configurations in a seperate config-app.js file.
+
+```
+// server/config-app.js
+
+var path = require('path');
+var routes = require('./routes.js');
+console.log('routes ', routes)
+var express = require('express');
+
+module.exports = function(app) {
+  //the jade templates will be stored at the top level in a 'views' directory
+  app.set('views', path.join(__dirname, '..', 'views'));
+  app.engine('jade', require('jade').__express);
+  app.set('view engine', 'jade');
+
+  app.use(express.static(path.join(__dirname, '..', 'public')));
+
+  //hook in the roots
+  app.use('/', routes);
+  return app;
+};
+
+```
+
+```
+// server/index.js
+
+var express = require('express');
+var app = express();
+
+app = require('./config-app.js')(app);
+module.exports = app;
+
+```
+
+
 
 
 
