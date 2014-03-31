@@ -230,8 +230,8 @@ Now that we've gotten that out of the way, we can handle the uploads. We are goi
 //config.js
 
 module.exports.aws = {
-  accessKey: process.env.AWS_KEY,
-  secretKey: process.env.SECRET_KEY,
+  accessKeyId: process.env.AWS_KEY,
+  secretAccessKey: process.env.SECRET_KEY,
   region: 'us-west-2'
 };
 
@@ -248,7 +248,22 @@ SECRET_KEY=2UYFKFF+UYFK2ugfaliug&asdbfKUGKGKUDGUSYF
 
 The endpoint for creating files will be a post request to '/files'. The file will be sent as a multipart stream. There are some excellent node solutions for extracting multipart streams, the one I'll be using here is busboy.
 
-Lets expand our basic handler to now upload :w
+Lets expand our basic handler to our upload hadnler. 
+
+```
+//server/controllers/files/index.js
+var Busboy = require('busboy');
+module.exports.create = function(req, res) {
+  res.send('#create')
+};
+
+```
+
+[Busboy](https://github.com/mscdex/busboy) is a from parser for node that has support for multipart file uploads exposing them as a stream.  So when we save the file, we have it take the file and route it directly to amazon S3 while creating the database record.
+
+First, lets create a new module lib/awsuploader.js
+
+
 
 
 

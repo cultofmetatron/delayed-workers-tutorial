@@ -1,4 +1,4 @@
-
+var awsUploader = require('../../../lib/awsuploader');
 
 module.exports.index  = function(req, res) {
   console.log('getting to #index')
@@ -10,7 +10,10 @@ module.exports.read   = function(req, res) {
 };
 
 module.exports.create = function(req, res) {
-  res.send('#create')
+  
+  
+  
+  //res.send('#create')
 };
 
 module.exports.update = function(req, res) {
