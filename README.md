@@ -80,7 +80,7 @@ module.exports = knex;
 
 Now we create a migration file
 
-> note: if you run in to any issues, first check to see if you have created the database as knex checks the database even when making a migration file.
+> note: if you run in to any issues, first check to see if you have created the database. Knex checks the database even when making a migration file.
 
 ```
 ./node_modules/knex/bin/knex migrate:make create_file_schema
@@ -130,7 +130,7 @@ Run the migration to move the schema into the database.
 ```
 
 
-#### setting up the routes
+#### Setting up the routes and views
 
 Express 4.x comes with an amazing new Router object that lets us decouple routes from the app.
 In ./server, create a controllers folder with a files folder with an index.js. In this file, create the controller verbs.
@@ -217,8 +217,9 @@ module.exports = app;
 
 ```
 
+The views are stored in the top level 'views' directory. The app itself will have an upload form at the top and a list of previously uploaded files listed underneath. To start with just an uploader for now, we'll create a layout.jade, index.jade and uploadForm.jade. uploadForm.jade contains the actual multpart form uploader. 
 
-
+I'm ommitting them from here but you can find them in the views folder.
 
 
 

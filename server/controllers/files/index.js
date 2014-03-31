@@ -2,7 +2,7 @@
 
 module.exports.index  = function(req, res) {
   console.log('getting to #index')
-  res.send('#index')
+  res.render('index', {});
 };
 
 module.exports.read   = function(req, res) {
