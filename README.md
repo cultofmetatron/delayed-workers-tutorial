@@ -3,6 +3,8 @@ Background Workers
 ###Using creating delayed jobs with node and heroku with RabbitMQ.
 ######By [Peter de Croos aka cultofmetatron](http://blog.peterdecroos.com)
 
+(still being written, check frequently)
+
 ####Event Queues 101
 
 Scaling a node app properly means understanding its greatest limitation: blocking tasks. Consider the lifecycle of a typical express app.
