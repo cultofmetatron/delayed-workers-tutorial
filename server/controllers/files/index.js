@@ -15,15 +15,14 @@ module.exports.create = function(req, res) {
   var formParser = (new FormParser({
     req: res,
     res: res,
-    mergeFn: function(filename, stream, filename, encoding, mimetype) {
-      
-    }
-  })).done().then(function() {
-  
-  
+  }))
+
+  formParser.onFile()
+  .spread(function(fieldname, stream, filename, encoding, mimetype) {
+    
   })
-  
-  
+
+
   //res.send('#create')
 };
 

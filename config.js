@@ -21,7 +21,6 @@ module.exports.aws = {
 };
 
 module.exports.awsBucket = {
-  Bucket: 'bucket',
-  Key: 'key'
+  Bucket: 'workers-tutorial',
 };
 
