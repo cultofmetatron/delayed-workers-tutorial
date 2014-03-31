@@ -12,3 +12,10 @@ module.exports.database = {
 //used by knex migrations
 module.exports.directory = path.join(__dirname, 'migrations');
 module.exports.tableName = 'migrations';
+
+
+module.exports.aws = {
+  accessKey: process.env.AWS_KEY,
+  secretKey: process.env.SECRET_KEY,
+  region: 'us-west-2'
+};

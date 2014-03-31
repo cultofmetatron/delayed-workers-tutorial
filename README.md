@@ -219,7 +219,37 @@ module.exports = app;
 
 The views are stored in the top level 'views' directory. The app itself will have an upload form at the top and a list of previously uploaded files listed underneath. To start with just an uploader for now, we'll create a layout.jade, index.jade and uploadForm.jade. uploadForm.jade contains the actual multpart form uploader. 
 
-I'm ommitting them from here but you can find them in the views folder.
+I'm omitting them from here but you can find them in the views folder.
+
+
+###Handling the uploads
+
+Now that we've gotten that out of the way, we can handle the uploads. We are going to be storing these files inside of an amazon S3 Bucket. So lets add some new configurations to out configs.js
+
+```
+//config.js
+
+module.exports.aws = {
+  accessKey: process.env.AWS_KEY,
+  secretKey: process.env.SECRET_KEY,
+  region: 'us-west-2'
+};
+
+```
+One should avoid using string literals for app keys in source code. These should be called from the shell enviornment. You can do this easily using a .env file. Tools like [foreman](https://github.com/ddollar/foreman) are a big help since it'll take the files in your .env and load them into your environment.
+
+Here's an example .env
+
+```
+AWS_KEY=JUYGKVUYFKLUFGLGLGL
+SECRET_KEY=2UYFKFF+UYFK2ugfaliug&asdbfKUGKGKUDGUSYF
+
+```
+
+The endpoint for creating files will be a post request to '/files'. The file will be sent as a multipart stream. There are some excellent node solutions for extracting multipart streams, the one I'll be using here is busboy.
+
+Lets expand our basic handler to now upload :w
+
 
 
 
