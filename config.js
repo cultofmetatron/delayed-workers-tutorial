@@ -15,7 +15,13 @@ module.exports.tableName = 'migrations';
 
 
 module.exports.aws = {
-  accessKey: process.env.AWS_KEY,
-  secretKey: process.env.SECRET_KEY,
+  accessKeyId: process.env.AWS_KEY,
+  secretAccessKey: process.env.SECRET_KEY,
   region: 'us-west-2'
 };
+
+module.exports.awsBucket = {
+  Bucket: 'bucket',
+  Key: 'key'
+};
+
